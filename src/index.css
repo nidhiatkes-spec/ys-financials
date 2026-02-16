@@ -1,0 +1,25 @@
+@import "tailwindcss";
+html {
+  scroll-behavior: smooth;
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 1.2s ease-out forwards;
+}
+
+.glow-text {
+  text-shadow:
+    0 0 10px rgba(234, 179, 8, 0.6),
+    0 0 20px rgba(234, 179, 8, 0.4),
+    0 0 40px rgba(234, 179, 8, 0.2);
+}
