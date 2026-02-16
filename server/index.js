@@ -72,7 +72,7 @@ app.post(
     try {
       const { name, email, message } = req.body;
 
-      const newInquiry = new Inquiry({
+      const newInquiry = new Contact({
         name,
         email,
         message
