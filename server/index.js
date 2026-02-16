@@ -11,7 +11,7 @@ const helmet = require("helmet");
 
 const allowedOrigins = [
   "http://localhost:5173", // development
-  "https://yourdomain.com" // production (change later)
+  "https://ys-financials.vercel.app" // production
 ];
 
 app.use(cors({
@@ -25,6 +25,7 @@ app.use(cors({
     }
   }
 }));
+
 
 
 const limiter = rateLimit({
