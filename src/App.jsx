@@ -139,12 +139,13 @@ const handleSubmit = async (e) => {
           }}
         ></div>
 
-        <div className="max-w-6xl mx-auto px-8 relative grid md:grid-cols-2 gap-16 items-center">
+        <div className="max-w-6xl mx-auto px-5 md:px-8 relative grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center">
+
 
           <div>
 
             <h1
-              className="text-6xl leading-tight"
+              className="text-4xl md:text-6xl leading-tight"
               style={{ fontFamily: "Playfair Display, serif" }}
             >
               Smart Financial Decisions 
@@ -179,7 +180,7 @@ const handleSubmit = async (e) => {
         </div>
       </section>
 
-      {/* ================= OUR EXPERTISE ================= */}
+      {/* ================= OUR SERVICES ================= */}
 <section id="services" className="py-28 px-8 bg-white">
 
   <div className="max-w-6xl mx-auto">
@@ -196,7 +197,7 @@ const handleSubmit = async (e) => {
     </div>
 
     {/* Expertise Cards */}
-    <div className="grid md:grid-cols-3 gap-10">
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-10">
 
       {/* Card 1 */}
       <div className="bg-white p-10 rounded-2xl shadow-md border hover:shadow-xl transition duration-300 border border-gray-100">
@@ -337,7 +338,7 @@ const handleSubmit = async (e) => {
 
     <div className="w-16 h-[3px] bg-[#8DC63F] mx-auto mb-16"></div>
 
-    <div className="grid md:grid-cols-3 gap-10">
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-10">
 
       {/* Testimonial 1 */}
       <div className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl hover:- translate-y-1 transition duration-300">
@@ -377,7 +378,7 @@ const handleSubmit = async (e) => {
   </div>
 </section>
 
-{/* ================= IMPACT SECTION ================= */}
+{/* ================= OUR APROACH ================= */}
 <section className="py-28 px-8 bg-white">
   <div className="max-w-6xl mx-auto text-center">
 
@@ -392,7 +393,7 @@ const handleSubmit = async (e) => {
       strategies and long-term wealth planning.
     </p>
 
-    <div className="grid md:grid-cols-4 gap-8">
+    <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
 
       {/* Card 1 */}
       <div className="bg-gray-50 p-8 rounded-2xl shadow-md hover:shadow-xl transition duration-300 border border-gray-100">
@@ -448,7 +449,7 @@ const handleSubmit = async (e) => {
 
     <div className="w-16 h-[3px] bg-[#8DC63F] mx-auto mb-16"></div>
 
-    <div className="grid md:grid-cols-3 gap-10">
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-10">
 
 
       {/* Card 1 */}
@@ -489,7 +490,8 @@ const handleSubmit = async (e) => {
       {/* CONTACT */}
       {/* ================= CONTACT ================= */}
 <section id="contact" className="py-32 px-8 bg-[#f9fbfd] scroll-mt-24">
-  <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-20 items-start">
+  <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-start">
+
 
     {/* LEFT SIDE */}
     <div>
