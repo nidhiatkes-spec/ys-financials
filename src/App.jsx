@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
+import { useState } from "react";
 
 function App() {
   const [scrolled, setScrolled] = useState(false);
@@ -20,17 +21,26 @@ const handleSubmit = async (e) => {
   e.preventDefault();
 
   try {
-    const response = await fetch("https://ys-financials.onrender.com/contact", {
-
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(formData),
-    });
+    const response = await fetch(
+      "https://ys-financials.onrender.com/contact",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      }
+    );
 
     const data = await response.json();
-    alert(data.message);
+
+    if (!response.ok) {
+      // Show validation error if exists
+      alert(data.errors?.[0]?.msg || "Something went wrong");
+      return;
+    }
+
+    alert(data.message || "Inquiry sent successfully!");
 
     setFormData({
       name: "",
@@ -39,9 +49,11 @@ const handleSubmit = async (e) => {
     });
 
   } catch (error) {
+    alert("Server error. Please try again later.");
     console.log("Error submitting form:", error);
   }
 };
+
 
 
   /* NAVBAR SHRINK */
