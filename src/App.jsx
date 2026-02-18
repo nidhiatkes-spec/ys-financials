@@ -147,7 +147,7 @@ const handleSubmit = async (e) => {
           <div>
 
             <h1
-              className="text-4xl sm:text-5xl md:text-6xl leading-tight"
+              className="text-5xl sm:text-6xl md:text-6xl leading-tight"
               style={{ fontFamily: "Playfair Display, serif" }}
             >
               Smart Financial Decisions 
@@ -397,11 +397,11 @@ const handleSubmit = async (e) => {
       strategies and long-term wealth planning.
     </p>
 
-    <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
 
 
       {/* Card 1 */}
-      <div className="bg-gray-50 p-8 rounded-2xl shadow-md hover:shadow-xl transition duration-300 border border-gray-100">
+      <div className="bg-gray-50 p-5 rounded-2xl shadow-md hover:shadow-xl transition duration-300 border border-gray-100">
         <h3 className="text-4xl font-bold text-[#005696] mb-3">
           Identifying Your Goals
         </h3>
@@ -411,7 +411,7 @@ const handleSubmit = async (e) => {
       </div>
 
       {/* Card 2 */}
-      <div className="bg-gray-50 p-8 rounded-2xl shadow-md hover:shadow-xl transition duration-300 border border-gray-100">
+      <div className="bg-gray-50 p-5 rounded-2xl shadow-md hover:shadow-xl transition duration-300 border border-gray-100">
         <h3 className="text-4xl font-bold text-[#005696] mb-3">
           Strategic Planning
         </h3>
@@ -421,7 +421,7 @@ const handleSubmit = async (e) => {
       </div>
 
       {/* Card 3 */}
-      <div className="bg-gray-50 p-8 rounded-2xl shadow-md hover:shadow-xl transition duration-300 border border-gray-100">
+      <div className="bg-gray-50 p-5 rounded-2xl shadow-md hover:shadow-xl transition duration-300 border border-gray-100">
         <h3 className="text-4xl font-bold text-[#005696] mb-3">
           Execution & Support
         </h3>
@@ -431,7 +431,7 @@ const handleSubmit = async (e) => {
       </div>
 
       {/* Card 4 */}
-      <div className="bg-gray-50 p-8 rounded-2xl shadow-md hover:shadow-xl transition duration-300 border border-gray-100">
+      <div className="bg-gray-50 p-5 rounded-2xl shadow-md hover:shadow-xl transition duration-300 border border-gray-100">
         <h3 className="text-4xl font-semibold text-[#005696] mb-3">
           Continuous Review
         </h3>
