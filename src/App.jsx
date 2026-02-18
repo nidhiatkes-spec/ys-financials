@@ -128,7 +128,8 @@ const handleSubmit = async (e) => {
       <div className="pt-36"></div>
 
       {/* HERO */}
-      <section className="relative py-40 overflow-hidden">
+      <section className="relative py-24 md:py-40 overflow-hidden">
+
 
         <div
           className="absolute inset-0 opacity-10 animate-pulse"
@@ -142,10 +143,11 @@ const handleSubmit = async (e) => {
         <div className="max-w-6xl mx-auto px-5 md:px-8 relative grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center">
 
 
+
           <div>
 
             <h1
-              className="text-4xl md:text-6xl leading-tight"
+              className="text-4xl sm:text-5xl md:text-6xl leading-tight"
               style={{ fontFamily: "Playfair Display, serif" }}
             >
               Smart Financial Decisions 
@@ -180,7 +182,7 @@ const handleSubmit = async (e) => {
         </div>
       </section>
 
-      {/* ================= OUR SERVICES ================= */}
+      {/* ================= OUR EXPERTISE ================= */}
 <section id="services" className="py-28 px-8 bg-white">
 
   <div className="max-w-6xl mx-auto">
@@ -198,6 +200,7 @@ const handleSubmit = async (e) => {
 
     {/* Expertise Cards */}
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-10">
+
 
       {/* Card 1 */}
       <div className="bg-white p-10 rounded-2xl shadow-md border hover:shadow-xl transition duration-300 border border-gray-100">
@@ -340,6 +343,7 @@ const handleSubmit = async (e) => {
 
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-10">
 
+
       {/* Testimonial 1 */}
       <div className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl hover:- translate-y-1 transition duration-300">
         <div className="text-yellow-500 text-xl mb-4">★★★★★</div>
@@ -378,7 +382,7 @@ const handleSubmit = async (e) => {
   </div>
 </section>
 
-{/* ================= OUR APROACH ================= */}
+{/* ================= IMPACT SECTION ================= */}
 <section className="py-28 px-8 bg-white">
   <div className="max-w-6xl mx-auto text-center">
 
@@ -394,6 +398,7 @@ const handleSubmit = async (e) => {
     </p>
 
     <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
+
 
       {/* Card 1 */}
       <div className="bg-gray-50 p-8 rounded-2xl shadow-md hover:shadow-xl transition duration-300 border border-gray-100">
@@ -450,6 +455,7 @@ const handleSubmit = async (e) => {
     <div className="w-16 h-[3px] bg-[#8DC63F] mx-auto mb-16"></div>
 
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-10">
+
 
 
       {/* Card 1 */}
