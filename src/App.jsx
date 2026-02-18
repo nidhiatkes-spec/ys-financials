@@ -32,15 +32,25 @@ const handleSubmit = async (e) => {
       }
     );
 
-    const data = await response.json();
+    console.log("STATUS:", response.status);
 
-    if (!response.ok) {
-      // Show validation error if exists
-      alert(data.errors?.[0]?.msg || "Something went wrong");
+    const text = await response.text();
+    console.log("RAW RESPONSE:", text);
+
+    let data;
+    try {
+      data = JSON.parse(text);
+    } catch {
+      alert("Invalid JSON response from server");
       return;
     }
 
-    alert(data.message || "Inquiry sent successfully!");
+    if (!response.ok) {
+      alert(data.errors?.[0]?.msg || data.message || "Bad Request");
+      return;
+    }
+
+    alert(data.message || "Success");
 
     setFormData({
       name: "",
@@ -49,10 +59,11 @@ const handleSubmit = async (e) => {
     });
 
   } catch (error) {
-    alert("Server error. Please try again later.");
-    console.log("Error submitting form:", error);
+    console.log("Fetch error:", error);
+    alert("Server connection failed");
   }
 };
+
 
 
 
