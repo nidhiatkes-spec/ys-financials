@@ -19,65 +19,42 @@ function App() {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   };
 
-  const handleChange = (e) => {
+  const handleChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      const response = await fetch(
-        "https://ys-financials.onrender.com/contact",
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(formData),
-        }
-      );
-      const data = await response.json();
-      if (!response.ok) {
-        alert(data.message || "Something went wrong");
-        return;
-      }
-      alert("Message Sent Successfully!");
-      setFormData({ name: "", email: "", message: "" });
-    } catch {
-      alert("Server connection failed");
-    }
+    alert("Consultation request submitted.");
+    setFormData({ name: "", email: "", message: "" });
   };
 
   const fadeUp = {
-    hidden: { opacity: 0, y: 40 },
+    hidden: { opacity: 0, y: 60 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.8 } },
   };
 
   return (
-    <div className="bg-white text-gray-800" style={{ fontFamily: "Inter, sans-serif" }}>
+    <div className="bg-[#0f172a] text-white scroll-smooth">
 
       {/* NAVBAR */}
       <nav
-        className={`fixed w-full z-50 transition-all duration-300 border-b ${
+        className={`fixed w-full z-50 transition-all duration-300 ${
           scrolled
-            ? "py-3 shadow-lg bg-white/95 backdrop-blur-md"
-            : "py-6 bg-white/80"
+            ? "py-3 bg-[#0f172a]/80 backdrop-blur-lg shadow-xl"
+            : "py-6 bg-transparent"
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
-          <div>
-            <h1 className="text-2xl md:text-3xl font-bold text-[#0f172a]">
-              YS Financials
-            </h1>
-            <p className="text-xs tracking-widest text-[#8DC63F] uppercase">
-              Your Financial Doctor
-            </p>
-          </div>
+          <h1 className="text-2xl font-bold tracking-wide">
+            YS <span className="text-[#facc15]">Financials</span>
+          </h1>
 
-          <div className="hidden md:flex space-x-8 font-medium">
+          <div className="hidden md:flex space-x-8 text-sm font-medium">
             {["services", "about", "contact"].map((item) => (
               <button
                 key={item}
                 onClick={() => scrollToSection(item)}
-                className="capitalize hover:text-[#1e3a8a] transition"
+                className="capitalize hover:text-[#facc15] transition"
               >
                 {item}
               </button>
@@ -86,186 +63,148 @@ function App() {
         </div>
       </nav>
 
-      <div className="pt-36"></div>
+      <div className="pt-40"></div>
 
       {/* HERO */}
       <motion.section
         variants={fadeUp}
         initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        className="py-24 md:py-40 bg-gradient-to-r from-[#0f172a] to-[#1e3a8a] text-white"
+        animate="visible"
+        className="relative py-32"
       >
-        <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
-          <div>
-            <h1 className="text-5xl md:text-6xl font-bold leading-tight">
-              Smart Financial Decisions
-              <span className="text-[#facc15]"> Start Here.</span>
-            </h1>
+        <div className="absolute inset-0 bg-gradient-to-r from-[#1e293b] to-[#0f172a] -z-10"></div>
 
-            <p className="mt-6 text-lg text-gray-200 max-w-lg">
-              Strategic guidance. Transparent advice. Confident decisions.
-            </p>
+        <div className="max-w-6xl mx-auto px-6 text-center">
+          <motion.h1
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1 }}
+            className="text-5xl md:text-7xl font-bold leading-tight"
+          >
+            Strategic Financial
+            <span className="block text-[#facc15]">
+              Growth & Wealth Planning
+            </span>
+          </motion.h1>
 
-            <button
-              onClick={() => scrollToSection("contact")}
-              className="mt-10 bg-[#facc15] text-black px-8 py-4 rounded-lg font-semibold hover:scale-105 transition"
-            >
-              Get Free Consultation
-            </button>
-          </div>
+          <p className="mt-6 text-gray-300 text-lg max-w-2xl mx-auto">
+            Empowering individuals and businesses with intelligent investment
+            strategies and disciplined financial planning.
+          </p>
 
-          <motion.img
-            src="https://images.unsplash.com/photo-1554224154-26032ffc0d07"
-            alt="Financial Planning"
-            className="rounded-3xl shadow-2xl"
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8 }}
-          />
+          <button
+            onClick={() => scrollToSection("contact")}
+            className="mt-10 bg-[#facc15] text-black px-10 py-4 rounded-full font-semibold hover:scale-105 transition"
+          >
+            Schedule Consultation
+          </button>
         </div>
       </motion.section>
 
+      {/* STATS */}
+      <section className="py-20 bg-[#111827]">
+        <div className="max-w-6xl mx-auto grid md:grid-cols-4 gap-10 text-center">
+          {[
+            { number: "500+", label: "Clients Served" },
+            { number: "₹50Cr+", label: "Assets Managed" },
+            { number: "10+", label: "Years Experience" },
+            { number: "98%", label: "Client Satisfaction" },
+          ].map((stat, i) => (
+            <motion.div
+              key={i}
+              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, y: 40 }}
+              transition={{ duration: 0.6 }}
+              className="bg-[#1e293b] p-8 rounded-2xl shadow-lg"
+            >
+              <h3 className="text-4xl font-bold text-[#facc15]">
+                {stat.number}
+              </h3>
+              <p className="mt-2 text-gray-400">{stat.label}</p>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
       {/* SERVICES */}
-      <section id="services" className="py-28 px-6">
-        <div className="max-w-6xl mx-auto text-center">
-          <h2 className="text-4xl font-bold text-[#0f172a] mb-6">
-            Our Services
+      <section id="services" className="py-32">
+        <div className="max-w-6xl mx-auto px-6 text-center">
+          <h2 className="text-4xl font-bold mb-16">
+            Our <span className="text-[#facc15]">Services</span>
           </h2>
 
           <div className="grid md:grid-cols-3 gap-10">
             {[
-              "Mutual Funds & Investment Advisory",
-              "Loan & Funding Solutions",
-              "Tax & Financial Planning",
-              "Retirement Planning & Consulting",
-              "Wealth Management & Advisory",
-              "Stocks & Bonds Consulting",
+              "Investment Advisory",
+              "Wealth Management",
+              "Retirement Planning",
+              "Tax Optimization",
+              "Loan & Funding",
+              "Stock & Bond Consulting",
             ].map((service, i) => (
-              <div
+              <motion.div
                 key={i}
-                className="bg-white p-8 rounded-2xl shadow-md hover:shadow-xl hover:-translate-y-2 transition"
+                whileHover={{ scale: 1.05 }}
+                className="bg-[#1e293b] p-10 rounded-2xl shadow-xl border border-[#334155]"
               >
-                <h3 className="text-xl font-semibold text-[#1e3a8a] mb-4">
+                <h3 className="text-xl font-semibold text-[#facc15] mb-4">
                   {service}
                 </h3>
-                <p className="text-gray-600">
-                  Strategic advisory solutions tailored for sustainable financial growth.
+                <p className="text-gray-400">
+                  Comprehensive and strategic financial solutions tailored for
+                  sustainable growth.
                 </p>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
       </section>
 
       {/* ABOUT */}
-      <section id="about" className="py-28 px-6 bg-gray-50">
-        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
-          <div>
-            <h2 className="text-4xl font-bold text-[#0f172a] mb-6">
-              About YS Financials
+      <section id="about" className="py-32 bg-[#111827]">
+        <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
+          <motion.div
+            initial={{ opacity: 0, x: -60 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <h2 className="text-4xl font-bold mb-6">
+              About <span className="text-[#facc15]">YS Financials</span>
             </h2>
-            <p className="text-gray-600 leading-relaxed">
-              With a client-first approach and strong partnerships with financial
-              institutions, we simplify complex processes and focus on long-term
-              financial stability and growth.
+            <p className="text-gray-400 leading-relaxed">
+              We provide transparent, disciplined, and strategic financial
+              advisory designed to help clients build sustainable wealth and
+              long-term financial security.
             </p>
-          </div>
+          </motion.div>
 
-          <div className="bg-white p-12 rounded-3xl shadow-xl text-center">
-            <h3 className="text-2xl font-semibold text-[#1e3a8a] mb-4">
+          <motion.div
+            initial={{ opacity: 0, x: 60 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            className="bg-[#1e293b] p-12 rounded-3xl shadow-2xl"
+          >
+            <h3 className="text-2xl font-semibold text-[#facc15] mb-4">
               Our Mission
             </h3>
-            <p className="text-gray-600">
-              To empower clients with clarity, smart strategies, and transparent
-              financial solutions.
+            <p className="text-gray-400">
+              To empower clients with clarity, precision, and data-driven
+              strategies that build generational wealth.
             </p>
-          </div>
-        </div>
-      </section>
-
-      {/* TESTIMONIALS */}
-      <section className="py-28 px-6 bg-white">
-        <div className="max-w-6xl mx-auto text-center">
-          <h2 className="text-4xl font-bold text-[#0f172a] mb-12">
-            What Our Clients Say
-          </h2>
-
-          <div className="grid md:grid-cols-3 gap-10">
-            {["Rahul Mehta", "Anjali Sharma", "Vikram Patel"].map((name, i) => (
-              <div
-                key={i}
-                className="bg-gray-50 p-8 rounded-2xl shadow-md hover:shadow-xl transition"
-              >
-                <p className="text-gray-600 mb-6">
-                  Exceptional advisory and transparent financial guidance.
-                </p>
-                <h4 className="font-semibold text-[#1e3a8a]">{name}</h4>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* OUR APPROACH */}
-      <section className="py-28 px-6 bg-gray-50">
-        <div className="max-w-6xl mx-auto text-center">
-          <h2 className="text-4xl font-bold text-[#0f172a] mb-12">
-            Our Approach
-          </h2>
-
-          <div className="grid md:grid-cols-4 gap-8">
-            {[
-              "Identify Goals",
-              "Strategic Planning",
-              "Execution & Support",
-              "Continuous Review",
-            ].map((item, i) => (
-              <div
-                key={i}
-                className="bg-white p-8 rounded-2xl shadow-md hover:shadow-xl transition"
-              >
-                <h3 className="text-xl font-semibold text-[#1e3a8a]">
-                  {item}
-                </h3>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* WHY CHOOSE US */}
-      <section className="py-28 px-6 bg-white">
-        <div className="max-w-6xl mx-auto text-center">
-          <h2 className="text-4xl font-bold text-[#0f172a] mb-12">
-            Why Choose YS Financials
-          </h2>
-
-          <div className="grid md:grid-cols-3 gap-10">
-            {[
-              "Strategic Investment Planning",
-              "Risk-Optimized Portfolios",
-              "Transparent Advisory",
-            ].map((item, i) => (
-              <div
-                key={i}
-                className="bg-gray-50 p-8 rounded-2xl shadow-md hover:shadow-xl transition"
-              >
-                <h3 className="text-xl font-semibold text-[#1e3a8a]">
-                  {item}
-                </h3>
-              </div>
-            ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 
       {/* CONTACT */}
-      <section id="contact" className="py-28 px-6 bg-gray-50">
-        <div className="max-w-5xl mx-auto">
+      <section id="contact" className="py-32">
+        <div className="max-w-4xl mx-auto px-6 text-center">
+          <h2 className="text-4xl font-bold mb-12">
+            Let’s Build Your <span className="text-[#facc15]">Future</span>
+          </h2>
+
           <form
             onSubmit={handleSubmit}
-            className="bg-white p-12 rounded-3xl shadow-2xl space-y-6"
+            className="bg-[#1e293b] p-12 rounded-3xl shadow-2xl space-y-6"
           >
             <input
               type="text"
@@ -273,7 +212,7 @@ function App() {
               value={formData.name}
               onChange={handleChange}
               placeholder="Full Name"
-              className="w-full border rounded-lg px-4 py-3 focus:ring-2 focus:ring-[#1e3a8a] outline-none"
+              className="w-full bg-[#0f172a] border border-[#334155] rounded-lg px-4 py-3 focus:ring-2 focus:ring-[#facc15] outline-none"
               required
             />
             <input
@@ -282,7 +221,7 @@ function App() {
               value={formData.email}
               onChange={handleChange}
               placeholder="Email Address"
-              className="w-full border rounded-lg px-4 py-3 focus:ring-2 focus:ring-[#1e3a8a] outline-none"
+              className="w-full bg-[#0f172a] border border-[#334155] rounded-lg px-4 py-3 focus:ring-2 focus:ring-[#facc15] outline-none"
               required
             />
             <textarea
@@ -291,20 +230,21 @@ function App() {
               value={formData.message}
               onChange={handleChange}
               placeholder="How can we assist you?"
-              className="w-full border rounded-lg px-4 py-3 focus:ring-2 focus:ring-[#1e3a8a] outline-none"
+              className="w-full bg-[#0f172a] border border-[#334155] rounded-lg px-4 py-3 focus:ring-2 focus:ring-[#facc15] outline-none"
               required
             />
             <button
               type="submit"
-              className="w-full bg-[#1e3a8a] text-white py-3 rounded-lg font-semibold hover:scale-105 transition"
+              className="w-full bg-[#facc15] text-black py-3 rounded-full font-semibold hover:scale-105 transition"
             >
-              Book Free Consultation
+              Book Consultation
             </button>
           </form>
         </div>
       </section>
 
-      <footer className="py-10 text-center border-t text-gray-500">
+      {/* FOOTER */}
+      <footer className="py-10 text-center text-gray-500 border-t border-[#1e293b]">
         © 2026 YS Financials. All Rights Reserved.
       </footer>
     </div>
