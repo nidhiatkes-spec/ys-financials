@@ -134,78 +134,75 @@ const fadeUp = {
       <div className="pt-36"></div>
 
       {/* HERO */}
-      <motion.section
+      {/* HERO */}
+<motion.section
   variants={fadeUp}
   initial="hidden"
   whileInView="visible"
   viewport={{ once: true }}
-  className="relative py-24 md:py-40 overflow-hidden"></motion.section>
-
-
-        <div
-          className="absolute inset-0 opacity-10 animate-pulse"
-          style={{
-            backgroundImage:
-              "linear-gradient(to right, #00AEEF 1px, transparent 1px), linear-gradient(to bottom, #00AEEF 1px, transparent 1px)",
-            backgroundSize: "60px 60px",
-          }}
-        ></div>
-
-        <div className="max-w-6xl mx-auto px-5 md:px-8 relative grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center">
-
-
-
-          <div>
-
-            <h1
-              className="text-5xl sm:text-6xl md:text-6xl leading-tight"
-              style={{ fontFamily: "Playfair Display, serif" }}
-            >
-              Smart Financial Decisions 
-              <span className="text-[#8DC63F]"> Start Here.</span>
-            </h1>
-
-            <p className="mt-5 text-lg max-w-lg opacity-">
-              Strategic guidance. Transperent advice. Confident decisions.
-            </p>
-
-            <button
-              onClick={() => scrollToSection("contact")}
-              className="mt-10 bg-[#005696] text-white px-8 py-4 rounded-md hover:bg-[#003f6b] transition"
-            >
-              Get Free Consultation
-            </button>
-
-          </div>
-
-          <motion.div
-  initial={{ opacity: 0, scale: 0.95 }}
-  whileInView={{ opacity: 1, scale: 1 }}
-  transition={{ duration: 0.8 }}
-  className="relative rounded-2xl overflow-hidden shadow-2xl"
+  className="relative py-24 md:py-40 overflow-hidden"
 >
-  <img
-    src="https://images.unsplash.com/photo-1554224154-26032ffc0d07"
-    alt="Financial Planning"
-    className="w-full h-full object-cover"
-  />
 
-  <div className="absolute inset-0 bg-black/40 flex items-center justify-center p-8">
-    <div className="text-white text-center">
-      <h3 className="text-2xl font-semibold mb-4">Our Philosophy</h3>
-      <p className="text-sm leading-relaxed">
-        We believe finance should be simple, transparent, and empowering.
-        Our mission is to guide clients towards smarter financial decisions with clarity and trust.
+  <div
+    className="absolute inset-0 opacity-10 animate-pulse"
+    style={{
+      backgroundImage:
+        "linear-gradient(to right, #00AEEF 1px, transparent 1px), linear-gradient(to bottom, #00AEEF 1px, transparent 1px)",
+      backgroundSize: "60px 60px",
+    }}
+  ></div>
+
+  <div className="max-w-6xl mx-auto px-5 md:px-8 relative grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center">
+
+    <div>
+      <h1
+        className="text-5xl sm:text-6xl md:text-6xl leading-tight"
+        style={{ fontFamily: "Playfair Display, serif" }}
+      >
+        Smart Financial Decisions
+        <span className="text-[#8DC63F]"> Start Here.</span>
+      </h1>
+
+      <p className="mt-5 text-lg max-w-lg">
+        Strategic guidance. Transparent advice. Confident decisions.
       </p>
+
+      <button
+        onClick={() => scrollToSection("contact")}
+        className="mt-10 bg-[#005696] text-white px-8 py-4 rounded-md hover:bg-[#003f6b] transition"
+      >
+        Get Free Consultation
+      </button>
     </div>
-  </div>
-</motion.div>
 
+    <motion.div
+      initial={{ opacity: 0, scale: 0.95 }}
+      whileInView={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 0.8 }}
+      className="relative rounded-2xl overflow-hidden shadow-2xl"
+    >
+      <img
+        src="https://images.unsplash.com/photo-1554224154-26032ffc0d07"
+        alt="Financial Planning"
+        className="w-full h-full object-cover"
+      />
 
+      <div className="absolute inset-0 bg-black/40 flex items-center justify-center p-8">
+        <div className="text-white text-center">
+          <h3 className="text-2xl font-semibold mb-4">Our Philosophy</h3>
+          <p className="text-sm leading-relaxed">
+            We believe finance should be simple, transparent, and empowering.
+            Our mission is to guide clients towards smarter financial decisions with clarity and trust.
+          </p>
         </div>
-      
+      </div>
+    </motion.div>
 
-      {/* ================= OUR SERVICES ================= */}
+  </div>
+
+</motion.section>
+
+  {/* ================= OUR SERVICES ================= */}
 <section id="services" className="py-28 px-8 bg-white">
 
   <div className="max-w-6xl mx-auto">
