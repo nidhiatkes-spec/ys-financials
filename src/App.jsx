@@ -183,11 +183,11 @@ return (
       transition={{ duration: 0.8 }}
       className="relative rounded-2xl overflow-hidden shadow-2xl"
     >
-      <img
+      {/* <img
         src="https://images.unsplash.com/photo-1554224154-26032ffc0d07"
         alt="Financial Planning"
         className="w-full h-full object-cover"
-      />
+      /> */}
 
       <div className="absolute inset-0 bg-black/40 flex items-center justify-center p-8">
         <div className="text-white text-center">
