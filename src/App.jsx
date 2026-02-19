@@ -6,8 +6,8 @@ export default function App() {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   };
 
-  const fade = {
-    hidden: { opacity: 0, y: 40 },
+  const fadeUp = {
+    hidden: { opacity: 0, y: 50 },
     visible: {
       opacity: 1,
       y: 0,
@@ -16,108 +16,117 @@ export default function App() {
   };
 
   return (
-    <div className="font-sans text-[#111827] bg-white">
+    <div className="relative font-sans text-gray-800 bg-white overflow-x-hidden">
 
-      {/* NAVBAR */}
-      <nav className="fixed w-full bg-white border-b border-gray-100 z-50">
+      {/* ===== Floating Gradient Background ===== */}
+      <div className="absolute top-[-200px] left-[-200px] w-[500px] h-[500px] bg-blue-200 rounded-full blur-3xl opacity-30"></div>
+      <div className="absolute bottom-[-200px] right-[-200px] w-[500px] h-[500px] bg-indigo-200 rounded-full blur-3xl opacity-30"></div>
+
+      {/* ===== NAVBAR ===== */}
+      <nav className="fixed w-full bg-white/70 backdrop-blur-md border-b border-gray-100 z-50">
         <div className="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
-          <h1 className="text-lg font-semibold tracking-wide">
+          <h1 className="text-lg font-semibold tracking-wide text-[#005696]">
             YS Financials
           </h1>
 
           <div className="hidden md:flex gap-10 text-sm font-medium">
-            <button onClick={() => scrollToSection("about")} className="hover:text-[#005696] transition">
-              About
-            </button>
-            <button onClick={() => scrollToSection("services")} className="hover:text-[#005696] transition">
-              Services
-            </button>
-            <button onClick={() => scrollToSection("contact")} className="hover:text-[#005696] transition">
-              Contact
-            </button>
+            {["about", "services", "contact"].map((item) => (
+              <button
+                key={item}
+                onClick={() => scrollToSection(item)}
+                className="hover:text-[#005696] transition"
+              >
+                {item.charAt(0).toUpperCase() + item.slice(1)}
+              </button>
+            ))}
           </div>
         </div>
       </nav>
 
-      {/* HERO */}
-      <section className="pt-40 pb-32">
-        <div className="max-w-6xl mx-auto px-6">
+      {/* ===== HERO ===== */}
+      <section className="pt-40 pb-32 relative">
+        <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-20 items-center">
           <motion.div
-            variants={fade}
+            variants={fadeUp}
             initial="hidden"
             animate="visible"
           >
-            <h1 className="text-6xl leading-tight font-semibold max-w-4xl">
-              Strategic Financial Advisory
-              <span className="text-[#005696]"> Built on Trust.</span>
+            <h1 className="text-6xl leading-tight font-semibold">
+              Modern Financial Strategy
+              <span className="text-[#005696]"> Simplified.</span>
             </h1>
 
-            <p className="mt-8 text-lg text-gray-600 max-w-2xl leading-relaxed">
-              We provide structured wealth management, investment planning,
-              and financial consulting designed for long-term stability
-              and disciplined growth.
+            <p className="mt-8 text-lg text-gray-600 max-w-xl leading-relaxed">
+              Intelligent wealth management, structured investment planning,
+              and advisory solutions built for long-term clarity and growth.
             </p>
 
-            <div className="mt-10">
-              <button
-                onClick={() => scrollToSection("contact")}
-                className="bg-[#005696] text-white px-8 py-4 rounded-md text-sm tracking-wide hover:bg-[#00497a] transition"
-              >
-                Request Consultation
-              </button>
-            </div>
+            <button
+              onClick={() => scrollToSection("contact")}
+              className="mt-10 bg-[#005696] text-white px-8 py-4 rounded-lg shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
+            >
+              Book a Consultation
+            </button>
           </motion.div>
+
+          <motion.img
+            variants={fadeUp}
+            initial="hidden"
+            animate="visible"
+            src="https://images.unsplash.com/photo-1551288049-bebda4e38f71"
+            alt="Finance Dashboard"
+            className="rounded-3xl shadow-2xl"
+          />
         </div>
       </section>
 
-      {/* ABOUT */}
-      <section id="about" className="py-32 bg-gray-50">
+      {/* ===== ABOUT ===== */}
+      <section id="about" className="py-32">
         <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-20 items-center">
+          <motion.img
+            src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40"
+            alt="Financial Planning"
+            className="rounded-2xl shadow-xl"
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+          />
+
           <motion.div
-            variants={fade}
+            variants={fadeUp}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
           >
             <h2 className="text-4xl font-semibold mb-6">
-              A Disciplined Approach to Wealth
+              Disciplined Wealth Management
             </h2>
             <p className="text-gray-600 leading-relaxed">
-              Our advisory philosophy is built on clarity, research, and
-              long-term partnerships. We focus on capital preservation,
-              strategic asset allocation, and tax-efficient structures
-              tailored to each client’s objectives.
+              We combine research-driven analysis, structured capital
+              allocation, and long-term partnerships to ensure financial
+              stability and sustainable growth.
             </p>
           </motion.div>
-
-          <motion.img
-            src="https://images.unsplash.com/photo-1565514158740-064f34bd6cfd"
-            alt=""
-            className="rounded-lg shadow-lg"
-            variants={fade}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-          />
         </div>
       </section>
 
-      {/* SERVICES */}
-      <section id="services" className="py-32">
+      {/* ===== SERVICES ===== */}
+      <section id="services" className="py-32 bg-gray-50">
         <div className="max-w-6xl mx-auto px-6">
-          <h2 className="text-4xl font-semibold mb-20">
+          <h2 className="text-4xl font-semibold mb-20 text-center">
             Our Services
           </h2>
 
-          <div className="grid md:grid-cols-3 gap-16">
+          <div className="grid md:grid-cols-3 gap-12">
             {[
               {
                 title: "Investment Advisory",
-                desc: "Research-driven portfolio strategies aligned with risk and growth objectives.",
+                desc: "Research-driven portfolio strategies aligned with your financial objectives.",
               },
               {
                 title: "Wealth Management",
-                desc: "Structured capital allocation and long-term wealth planning.",
+                desc: "Strategic asset allocation focused on long-term value creation.",
               },
               {
                 title: "Tax & Retirement Planning",
@@ -126,10 +135,11 @@ export default function App() {
             ].map((service, i) => (
               <motion.div
                 key={i}
-                variants={fade}
+                variants={fadeUp}
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}
+                className="bg-white p-10 rounded-2xl shadow-md hover:shadow-2xl hover:-translate-y-2 transition-all duration-300"
               >
                 <h3 className="text-xl font-semibold mb-4">
                   {service.title}
@@ -143,39 +153,45 @@ export default function App() {
         </div>
       </section>
 
-      {/* CONTACT */}
-      <section id="contact" className="py-32 bg-gray-50">
+      {/* ===== CONTACT ===== */}
+      <section id="contact" className="py-32">
         <div className="max-w-3xl mx-auto px-6">
-          <h2 className="text-4xl font-semibold mb-12 text-center">
-            Connect With Us
-          </h2>
+          <motion.div
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="bg-white p-14 rounded-3xl shadow-2xl border border-gray-100"
+          >
+            <h2 className="text-3xl font-semibold mb-10 text-center">
+              Let’s Start a Conversation
+            </h2>
 
-          <div className="bg-white p-12 shadow-sm border border-gray-100 rounded-md">
             <div className="flex flex-col gap-6">
               <input
                 type="text"
                 placeholder="Full Name"
-                className="border border-gray-200 p-4 rounded-md focus:outline-none focus:border-[#005696]"
+                className="border p-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#005696]"
               />
               <input
                 type="email"
                 placeholder="Email Address"
-                className="border border-gray-200 p-4 rounded-md focus:outline-none focus:border-[#005696]"
+                className="border p-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#005696]"
               />
               <textarea
                 rows="4"
                 placeholder="Your Message"
-                className="border border-gray-200 p-4 rounded-md focus:outline-none focus:border-[#005696]"
+                className="border p-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#005696]"
               />
-              <button className="bg-[#005696] text-white py-4 rounded-md text-sm tracking-wide hover:bg-[#00497a] transition">
+              <button className="bg-[#005696] text-white py-4 rounded-lg shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
                 Submit Inquiry
               </button>
             </div>
-          </div>
+          </motion.div>
         </div>
       </section>
 
-      {/* FOOTER */}
+      {/* ===== FOOTER ===== */}
       <footer className="py-16 border-t border-gray-100 text-center text-sm text-gray-500">
         © 2026 YS Financials. All rights reserved.
       </footer>
