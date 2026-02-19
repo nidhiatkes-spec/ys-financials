@@ -70,13 +70,6 @@ const fadeUp = {
   },
 };
 
-return (
-  <div>
-    {/* Your website JSX goes here */}
-  </div>
-);
-}
-export default App;
 
 
 
@@ -638,3 +631,6 @@ export default App;
       </footer>
     </div>
   );
+}
+
+export default App;
