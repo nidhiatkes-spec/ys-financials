@@ -69,10 +69,6 @@ const fadeUp = {
     transition: { duration: 0.8, ease: "easeOut" },
   },
 };
-
-
-
-
   /* NAVBAR SHRINK */
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 40);
@@ -86,7 +82,30 @@ const fadeUp = {
     if (section) section.scrollIntoView({ behavior: "smooth" });
   };
 
-  return (
+return (
+  <motion.div
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    transition={{ duration: 0.8 }}
+  >
+
+
+
+
+
+  {/* /* NAVBAR SHRINK 
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 40);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []); */}
+
+  {/* /* SCROLL FUNCTION 
+  const scrollToSection = (id) => {
+    const section = document.getElementById(id);
+    if (section) section.scrollIntoView({ behavior: "smooth" });
+  }; */}
+
     <div
       className="bg-white text-gray-800 transition-colors duration-500"
       style={{ fontFamily: "Inter, sans-serif" }}
@@ -133,7 +152,7 @@ const fadeUp = {
 
       <div className="pt-36"></div>
 
-      {/* HERO */}
+     
       {/* HERO */}
 <motion.section
   variants={fadeUp}
@@ -628,6 +647,9 @@ const fadeUp = {
       </footer>
     </div>
   );
+
+  </motion.div>
+);
 }
 
 export default App;
