@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
-
+import { motion } from "framer-motion";
 
 function App() {
   const [scrolled, setScrolled] = useState(false);
@@ -17,7 +17,7 @@ const handleChange = (e) => {
   });
 };
 
-const handleSubmit = async (e) => {
+ const handleSubmit = async (e) => {
   e.preventDefault();
 
   try {
@@ -32,10 +32,7 @@ const handleSubmit = async (e) => {
       }
     );
 
-    console.log("STATUS:", response.status);
-
     const text = await response.text();
-    console.log("RAW RESPONSE:", text);
 
     let data;
     try {
@@ -63,7 +60,23 @@ const handleSubmit = async (e) => {
     alert("Server connection failed");
   }
 };
+// Animation Variant
+const fadeUp = {
+  hidden: { opacity: 0, y: 40 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.8, ease: "easeOut" },
+  },
+};
 
+return (
+  <div>
+    {/* Your website JSX goes here */}
+  </div>
+);
+}
+export default App;
 
 
 
@@ -128,7 +141,12 @@ const handleSubmit = async (e) => {
       <div className="pt-36"></div>
 
       {/* HERO */}
-      <section className="relative py-24 md:py-40 overflow-hidden">
+      <motion.section
+  variants={fadeUp}
+  initial="hidden"
+  whileInView="visible"
+  viewport={{ once: true }}
+  className="relative py-24 md:py-40 overflow-hidden"></motion.section>
 
 
         <div
@@ -167,22 +185,34 @@ const handleSubmit = async (e) => {
 
           </div>
 
-          <div className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-12 shadow-2xl">
+          <motion.div
+  initial={{ opacity: 0, scale: 0.95 }}
+  whileInView={{ opacity: 1, scale: 1 }}
+  transition={{ duration: 0.8 }}
+  className="relative rounded-2xl overflow-hidden shadow-2xl"
+>
+  <img
+    src="https://images.unsplash.com/photo-1554224154-26032ffc0d07"
+    alt="Financial Planning"
+    className="w-full h-full object-cover"
+  />
 
-            <h3 className="text-xl font-medium mb-6">
-              Our Philosophy
-            </h3>
+  <div className="absolute inset-0 bg-black/40 flex items-center justify-center p-8">
+    <div className="text-white text-center">
+      <h3 className="text-2xl font-semibold mb-4">Our Philosophy</h3>
+      <p className="text-sm leading-relaxed">
+        We believe finance should be simple, transparent, and empowering.
+        Our mission is to guide clients towards smarter financial decisions with clarity and trust.
+      </p>
+    </div>
+  </div>
+</motion.div>
 
-            <p className="text-sm opacity-80 leading-relaxed">
-              We belive finance should be simple, transparent and empowering. Our mission is to guide clients towards smarter financial decisions with clarity and trust.
-            </p>
-
-          </div>
 
         </div>
-      </section>
+      
 
-      {/* ================= OUR EXPERTISE ================= */}
+      {/* ================= OUR SERVICES ================= */}
 <section id="services" className="py-28 px-8 bg-white">
 
   <div className="max-w-6xl mx-auto">
@@ -203,7 +233,8 @@ const handleSubmit = async (e) => {
 
 
       {/* Card 1 */}
-      <div className="bg-white p-10 rounded-2xl shadow-md border hover:shadow-xl transition duration-300 border border-gray-100">
+      <div className="bg-white p-10 rounded-2xl shadow-md hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 ..."
+>
         <h3 className="text-xl font-semibold text-[#005696] mb-4">
           Mutual Funds & Investment Advisory
         </h3>
@@ -607,5 +638,3 @@ const handleSubmit = async (e) => {
       </footer>
     </div>
   );
-}
-export default App;
